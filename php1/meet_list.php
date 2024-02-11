@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['unique_id'])) {
     header("location: index.php");
 }
-include_once "C:/xampp\htdocs\Single Project Power\php1\config.php";
+include_once "C:/xampp\htdocs\Single Project Power - backup\php1\config.php";
 $i = 0;
 $border;
 $name = mysqli_query($conn, "SELECT * FROM users where unique_id={$_SESSION['unique_id']}");

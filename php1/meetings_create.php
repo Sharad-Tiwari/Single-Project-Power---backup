@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['unique_id'])) {
     header("location: index.php");
 }
-include_once "C:/xampp\htdocs\Single Project Power\php1\config.php";
+include_once "C:/xampp\htdocs\Single Project Power - backup\php1\config.php";
 $topic = mysqli_real_escape_string($conn, $_POST['topic']);
 $names = mysqli_real_escape_string($conn,  $_POST['mnames']);
 $location = mysqli_real_escape_string($conn, $_POST['location']);

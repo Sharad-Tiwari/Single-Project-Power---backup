@@ -18,6 +18,7 @@ let showMenu = false;
 const branch_selected = document.querySelector(".profile-page .chart_attendance .profile-attendance");
 var branch = branch_selected.value;
 console.log(branch);
+
 menuBtn.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
@@ -205,22 +206,27 @@ function faceRecog() {
               .getContext("2d")
               .clearRect(0, 0, canvas.width, canvas.height);
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/php1/attendance.php", true);
+            xhr.open("POST", "/Single Project Power - backup/php1/attendance.php", true);
+            xhr.getResponseHeader(
+              "Content-type",
+              "application/x-www-form-urlencoded"
+            );
             xhr.onload = () => {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                   let data = xhr.response;
-                  if ((data = "success")) {
-                    location.href = "/Front page.html";
+                  if ((data)) {
+                    // location.href = "/Single Project Power - backup/profile.php";
+                    console.log(data);
                   } else {
                     console.warn(data);
                   }
                 }
               }
             };
-            let formData = new FormData(form);
-            xhr.append("name="+name);
-            xhr.send();
+            var formData = new FormData();
+            formData.append("name",name);
+            xhr.send(formData);
           }
 
           faceDec.style.display = "none";
