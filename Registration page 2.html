@@ -1,0 +1,62 @@
+<html>
+<head>
+
+
+
+<script type="text/javascript">
+function validate()
+{
+if(document.f3.pass.value!=document.f3.pass1.value)
+{
+alert("Both password Must be same!");
+return(false);
+}
+if(document.f3.uname.value==""||document.f3.pass.value==""||document.f3.pass1.value=="")
+{
+alert("Please Insert the required fields!");
+return(false);
+}
+else
+{
+return(true);
+}
+}
+</script>
+</head>
+
+
+
+<body style="background-image: url('security1.jpg'); width=150px;height= 720px">
+<div style="margin-top:100px">
+<form name="f3" method="Post" onsubmit="return(validate())" action="Registration.php">
+<table border=1 bgcolor="#ADEFD1FF" align="Center" style="background-image: url('security2.jpg')">
+<tr><th>
+<label>  New Username: </label>
+</th>
+<td >
+<input type="text" name="uname" align="center" size=40% Placeholder="Enter a New Username">
+</td></tr>
+<tr><th>
+<label> New Password: </label>
+</th>
+<td>
+<input type="Password" name="pass" align="center" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  size=40% placeholder="Enter New Password">
+</td></tr>
+<tr><th>
+<label> Confirm Password: </label>
+</th>
+<td>
+<input type="Password" name="pass1" align="center" size=40% placeholder="Enter Password Again">
+</td></tr><tr><td>
+</td><td align="Center">
+<input type="submit" value="submit" >
+<input type="reset" value="reset" width=50%>
+</td>
+</table>
+</form>
+</div>
+
+
+
+</body>
+</html>
