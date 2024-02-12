@@ -216,7 +216,7 @@ if (!isset($_SESSION['unique_id'])) {
 
   <script src="main.js"></script>
   <script src="Javascript\meetings.js"></script>
-  <script src="Javascript/Geolocation.js"></script>
+  <!-- <script src="Javascript/Geolocation.js"></script> -->
 </body>
 
 </html>

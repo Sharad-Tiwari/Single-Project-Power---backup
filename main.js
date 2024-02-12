@@ -13,13 +13,24 @@ const punchOuteve = document.querySelector(".punch-out");
 const footer = document.querySelector(".footer");
 const canvass = document.getElementsByTagName("canvas");
 let date = new Date();
-let present = false;
+let present = "OUT";
 let showMenu = false;
-const branch_selected = document.querySelector(".profile-page .chart_attendance .profile-attendance");
-var branch = branch_selected.value;
-console.log(branch);
-
+// const branch_selected = document.querySelector(
+//   ".profile-page .chart_attendance .profile-attendance"
+// );
+// var branch = b ranch_selected.value;
+// console.log(branch);
 menuBtn.addEventListener("click", toggleMenu);
+
+let lat, lang;
+navigator.geolocation.getCurrentPosition((position) => {
+  const { latitude, longitude } = position.coords;
+  lat = latitude;
+  lang = longitude;
+  console.log(lat, lang);
+}, (err)=> {
+  console.log(err.message);
+});
 
 function toggleMenu() {
   if (!showMenu) {
@@ -49,71 +60,32 @@ punchOuteve.addEventListener("click", () => {
 });
 
 function punchIn() {
-  if (!present) {
-    const text = "You are Punched IN !!";
-    console.log(text + date);
-    confirm(text + "\n\n" + date);
-  
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      console.log("latitude =" + latitude + "\nlongitude =" + longitude);
-    });
+  const text = "You are Punched IN !!";
+  console.log(text + date);
+  confirm(text + "\n\n" + date);
 
-    $latitude = this.latitude;
-    $longitude = this.longitude;
+  const speech = new SpeechSynthesisUtterance(text);
+  speechSynthesis.speak(speech);
 
-    const speech = new SpeechSynthesisUtterance(text);
-    speechSynthesis.speak(speech);
-    
-    face.style.visibility = "hidden";
-    finger.style.visibility = "hidden";
-   
-    present = true;
-    
-  } else {
-    face.style.visibility = "hidden";
-    finger.style.visibility = "hidden";
-    confirm(
-      "You are already Punched IN!!\nDId you meant to Punch Out!! \nPress PUNCH OUT button....."
-    );
-    let msg =
-      "You are already  Punched IN!! \n Press PUNCH OUT button to punch out";
-    const alert = new SpeechSynthesisUtterance(msg);
-    speechSynthesis.speak(alert);
-  }
+  face.style.visibility = "hidden";
+  finger.style.visibility = "hidden";
+
+  present = "IN";
 }
 
 function punchOut() {
-  if (present) {
-    const text = "You are Punched OUT !!";
-    console.log(text + date);
-   
-    // face.addEventListener("click", faceRecog)
-    confirm(text + "\n\n" + date);
-    const speech = new SpeechSynthesisUtterance(text);
-    speechSynthesis.speak(speech);
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      console.log("latitude =" + latitude + "\nlongitude =" + longitude);
-    });
+  const text = "You are Punched OUT !!";
+  console.log(text + date);
 
-    $latitude = this.latitude;
-    $longitude = this.longitude;
+  // face.addEventListener("click", faceRecog)
+  confirm(text + "\n\n" + date);
+  const speech = new SpeechSynthesisUtterance(text);
+  speechSynthesis.speak(speech);
 
-    face.style.visibility = "hidden";
-    finger.style.visibility = "hidden";
-    present = false;
-    attenOpt.style.display = "flex";
-  } else {
-    confirm(
-      "You are already Punched Out!!\n Did you meant to Punch In!! \n Press PUNCH IN button......"
-    );
-    let msg = "You are already Punched Out!! \n Press PUNCH IN button";
-    face.style.visibility = "hidden";
-    finger.style.visibility = "hidden";
-    const alert = new SpeechSynthesisUtterance(msg);
-    speechSynthesis.speak(alert);
-  }
+  face.style.visibility = "hidden";
+  finger.style.visibility = "hidden";
+  present = "OUT";
+  attenOpt.style.display = "flex";
 }
 
 function faceRecog() {
@@ -205,8 +177,21 @@ function faceRecog() {
             canvas
               .getContext("2d")
               .clearRect(0, 0, canvas.width, canvas.height);
+
+            if (present === "OUT") {
+              punchIn();
+              canvas.style.visibility = "hidden";
+            } else {
+              punchOut();
+              canvas.style.visibility = "hidden";
+            }
+
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/Single Project Power - backup/php1/attendance.php", true);
+            xhr.open(
+              "POST",
+              "/Single Project Power - backup/php1/attendance.php",
+              true
+            );
             xhr.getResponseHeader(
               "Content-type",
               "application/x-www-form-urlencoded"
@@ -215,7 +200,7 @@ function faceRecog() {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                   let data = xhr.response;
-                  if ((data)) {
+                  if (data) {
                     // location.href = "/Single Project Power - backup/profile.php";
                     console.log(data);
                   } else {
@@ -225,7 +210,10 @@ function faceRecog() {
               }
             };
             var formData = new FormData();
-            formData.append("name",name);
+            formData.append("name", name);
+            formData.append("latitude", lat);
+            formData.append("longitude", lang);
+            formData.append("present", present);
             xhr.send(formData);
           }
 
@@ -233,18 +221,9 @@ function faceRecog() {
           faceDec.classList.remove("open");
           footer.style.display = "block";
           main.style.display = "block";
-          if (!present) {
-            punchIn();
-            canvas.style.visibility = "hidden";
-            
-            } else {
-            punchOut();
-            canvas.style.visibility = "hidden";
-          }
         }
       });
     }, 1000);
-    
   });
 }
 
@@ -255,13 +234,13 @@ const sndData = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         let data = xhr.response;
-        if (data = "success") {
+        if ((data = "success")) {
           location.href = "/Front page.html";
         } else {
           console.warn(data);
         }
       }
     }
-  }
+  };
   xhr.send();
-}
+};

@@ -1,7 +1,7 @@
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
-  function drawChart() {
+  function drawChart() {  
     var data = google.visualization.arrayToDataTable([
       ['Mon', 20, 28, 38, 45],
       ['Tue', 31, 38, 55, 66],
