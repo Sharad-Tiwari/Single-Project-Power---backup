@@ -15,11 +15,13 @@ const canvass = document.getElementsByTagName("canvas");
 let date = new Date();
 let present = "OUT";
 let showMenu = false;
-// const branch_selected = document.querySelector(
-//   ".profile-page .chart_attendance .profile-attendance"
-// );
-// var branch = b ranch_selected.value;
-// console.log(branch);
+const form = document.querySelector(
+  ".profile-page .chart_attendance .profile-attendance form"
+);
+
+let branch = document.getElementById("branch");
+// var branch_val = branch.options[branch.selectedIndex].value;
+
 menuBtn.addEventListener("click", toggleMenu);
 
 let lat, lang;
@@ -185,6 +187,8 @@ function faceRecog() {
               punchOut();
               canvas.style.visibility = "hidden";
             }
+            
+            console.log(branch.options[branch.selectedIndex].value);
 
             const xhr = new XMLHttpRequest();
             xhr.open(
@@ -214,6 +218,10 @@ function faceRecog() {
             formData.append("latitude", lat);
             formData.append("longitude", lang);
             formData.append("present", present);
+            formData.append(
+              "branch",
+              branch.options[branch.selectedIndex].value
+            );
             xhr.send(formData);
           }
 

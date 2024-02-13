@@ -144,17 +144,19 @@ if (!isset($_SESSION['unique_id'])) {
     <!---------------------------ATTENDANCE SECTION------------------------------------->
     <div class="chart_attendance">
       <section class="profile-attendance">
-        <label>Location:</label><br />
-        <select name="branch" class="branch">
-          <option value="None" default>Select Option</option>
-          <option value="Kurla">Kurla</option>
-          <option value="Powai">Powai</option>
-          <option value="Kanjurmarg">Kanjurmarg</option>
-          <option value="Mulund">Mulund</option>
-          <option value="Ghatkopar">Ghatkopar</option>
-          <option value="Vasai">Vasai</option>
-          <option value="Andheri">Andheri</option>
-        </select>
+        <form method="post">
+          <label>Location:</label><br />
+          <select name="branch" class="branch" id="branch" required>
+            <option value="None" default>Select Option</option>
+            <option value="Kurla">Kurla</option>
+            <option value="Powai">Powai</option>
+            <option value="Kanjurmarg">Kanjurmarg</option>
+            <option value="Mulund">Mulund</option>
+            <option value="Ghatkopar">Ghatkopar</option>
+            <option value="Vasai">Vasai</option>
+            <option value="Andheri">Andheri</option>
+          </select>
+        </form>
         <div class="wrapper">
           <div class="attendance-finger">
             <div class="punch-in">
