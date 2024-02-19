@@ -16,7 +16,7 @@ continueBtn.onclick = () => {
             let data = xhr.response;
             console.log(data);
               if(data === "success"){
-                location.href="users.php";
+                location.href="index.php";
               }else{
                 errorText.style.display = "block";
                 errorText.textContent = data;

@@ -58,6 +58,7 @@ if (!isset($_SESSION['unique_id'])) {
         <li><a class="nav link" href="#">Services</a></li>
         <li><a class="nav link" href="users.php">Chat</a></li>
         <li><a class="nav link" href="#">Contact</a></li>
+        <li><a class="nav link" href="php1/logout.php?logout_id=<?php echo $row['unique_id'] ?>">Log Out</a></li>
       </ul>
     </nav>
   </header>

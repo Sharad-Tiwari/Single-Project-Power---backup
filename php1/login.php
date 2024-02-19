@@ -12,7 +12,7 @@ $company = mysqli_real_escape_string($conn, $_POST['c_code']);
             $user_pass = ($password);
             $enc_pass = $row['password'];
             if($user_pass === $enc_pass){
-                $status = "Active now";
+                $status = "Active";
                 $sql2 = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
                 if($sql2){
                     $_SESSION['unique_id'] = $row['unique_id'];
