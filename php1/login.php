@@ -1,32 +1,35 @@
 <?php
 session_start();
-include_once  "config.php";
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
-$company = mysqli_real_escape_string($conn, $_POST['c_code']);
-// $conn = mysqli_connect("localhost", "root", "", "chat");
-    if(!empty($email) && !empty($password)){
+$company =  $_POST['c_code'];
+if ($company) {
+    $_SESSION['cc'] = $company;
+}
+    include_once  "config.php";
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    if (!empty($email) && !empty($password)) {
         $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
-        if(mysqli_num_rows($sql) > 0){
+        if (mysqli_num_rows($sql) > 0) {
             $row = mysqli_fetch_assoc($sql);
             $user_pass = ($password);
             $enc_pass = $row['password'];
-            if($user_pass === $enc_pass){
+            if ($user_pass === $enc_pass) {
                 $status = "Active";
                 $sql2 = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
-                if($sql2){
+                if ($sql2) {
                     $_SESSION['unique_id'] = $row['unique_id'];
                     echo "success";
-                }else{
+                } else {
                     echo "Something went wrong. Please try again!";
                 }
-            }else{
+            } else {
                 echo "Email or Password is Incorrect!";
             }
-        }else{
+        } else {
             echo "$email - This email does not Exist!";
         }
-    }else{
+    } else {
         echo "All input fields are required!";
     }
 ?>
