@@ -18,11 +18,9 @@ let showMenu = false;
 const form = document.querySelector(
   ".profile-page .chart_attendance .profile-attendance form"
 );
-
 let branch = document.getElementById("branch");
-
-
 menuBtn.addEventListener("click", toggleMenu);
+
 
 let lat, lang;
 navigator.geolocation.getCurrentPosition((position) => {
@@ -39,13 +37,11 @@ function toggleMenu() {
     nav.style.visibility = "visible";
     menuBtn.classList.add("open");
     navItems.forEach((item) => item.classList.add("open"));
-
     showMenu = true;
   } else {
     nav.classList.remove("open");
     menuBtn.classList.remove("open");
     navItems.forEach((item) => item.classList.remove("open"));
-
     showMenu = false;
   }
 }
@@ -80,7 +76,6 @@ function punchOut() {
   confirm(text + "\n\n" + date);
   const speech = new SpeechSynthesisUtterance(text);
   speechSynthesis.speak(speech);
-
   face.style.visibility = "hidden";
   finger.style.visibility = "hidden";
   present = "OUT";
@@ -175,7 +170,6 @@ function faceRecog() {
             canvas
               .getContext("2d")
               .clearRect(0, 0, canvas.width, canvas.height);
-
             if (present === "OUT") {
               punchIn();
               canvas.style.visibility = "hidden";
@@ -183,9 +177,6 @@ function faceRecog() {
               punchOut();
               canvas.style.visibility = "hidden";
             }
-            
-            console.log(branch.options[branch.selectedIndex].value);
-
             const xhr = new XMLHttpRequest();
             xhr.open(
               "POST",
@@ -200,7 +191,7 @@ function faceRecog() {
               if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                   let data = xhr.response;
-                  if (data) {
+                  if (data==="success") {
                     // location.href = "/Single Project Power - backup/profile.php";
                     console.log(data);
                   } else {
@@ -220,7 +211,6 @@ function faceRecog() {
             );
             xhr.send(formData);
           }
-
           faceDec.style.display = "none";
           faceDec.classList.remove("open");
           footer.style.display = "block";

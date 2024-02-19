@@ -13,6 +13,6 @@ date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d H:i:s');
 $sql = mysqli_query($conn, "INSERT into attendance values('{$_SESSION['unique_id']}','{$name}','{$latitude}','{$longitude}','{$date}', '{$present}')");
 if($sql){
-    echo $branch;
+    echo "success";
 }
 ?>
