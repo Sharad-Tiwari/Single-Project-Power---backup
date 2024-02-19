@@ -20,7 +20,7 @@ const form = document.querySelector(
 );
 
 let branch = document.getElementById("branch");
-// var branch_val = branch.options[branch.selectedIndex].value;
+
 
 menuBtn.addEventListener("click", toggleMenu);
 
@@ -29,7 +29,6 @@ navigator.geolocation.getCurrentPosition((position) => {
   const { latitude, longitude } = position.coords;
   lat = latitude;
   lang = longitude;
-  console.log(lat, lang);
 }, (err)=> {
   console.log(err.message);
 });
@@ -78,8 +77,6 @@ function punchIn() {
 function punchOut() {
   const text = "You are Punched OUT !!";
   console.log(text + date);
-
-  // face.addEventListener("click", faceRecog)
   confirm(text + "\n\n" + date);
   const speech = new SpeechSynthesisUtterance(text);
   speechSynthesis.speak(speech);
@@ -166,7 +163,6 @@ function faceRecog() {
         drawBox.draw(canvas);
 
         const name = result.label;
-        console.log(name);
         if (name != "unknown" && name != null && name != "" && isNaN(name)) {
           if (video.srcObject && video.srcObject.active) {
             const stream = video.srcObject;
