@@ -1,11 +1,14 @@
 <?php
 session_start();
+$company =$_POST['c_code'];
+$_SESSION['cc']=$company;
+
 include_once  "config.php";
 $fname = mysqli_real_escape_string($conn, $_POST['fname']);
 $lname = mysqli_real_escape_string($conn, $_POST['lname']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
-$company = mysqli_real_escape_string($conn, $_POST['c_code']);
+
 /*Generating Otp */
 $generator = "0246813579";
 $otp = "";
@@ -52,7 +55,7 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
 						if (move_uploaded_file($tmp_name, "images/" . $new_img_name)) {
 							$ran_id = rand(time(), 100000000);
 							$status = "Active now";
-							$encrypt_pass = ($password);
+							$encrypt_pass = md5($password);
 							$insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
                                 VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
 							if ($insert_query) {
