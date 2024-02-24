@@ -70,120 +70,117 @@ if (!isset($_SESSION['unique_id'])) {
     <!--------------------------------USER PROFILE------------------------------------>
     <section class="info">
 
-      <div class="emp-info">
+      <!-- <div class="emp-info"> -->
 
-        <div class="container-profile">
-          <div class="profile">
-            <div class="profile-img">
-              <img src="php1/images/<?php echo $row['img'] ?>">
-              <i class="fa-regular fa-pen-to-square"></i>
+      <div class="container-profile">
+        <div class="profile">
+          <div class="profile-img">
+            <img src="php1/images/<?php echo $row['img'] ?>">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </div>
+          <div class="details">
+            <div class="name-details">
+              <h3><?php echo $row['fname'] . " " . $row['lname'] ?></h3>
+              <button><?php echo $row['status'] ?></button>
             </div>
-            <div class="details">
-              <div class="name-details">
-                <h3><?php echo $row['fname'] . " " . $row['lname'] ?></h3>
-                <button><?php echo $row['status'] ?></button>
+            <div class="role-pos">
+              <div class="position">
+                <label>Role:</label>
+                <span><?php echo $row['role'] ?></span>
               </div>
-              <div class="role-pos">
-                <div class="position">
-                  <label>Role:</label>
-                  <span><?php echo $row['role'] ?></span>
-                </div>
-                <div class="position">
-                  <label>Position:</label>
-                  <span><?php echo $row['position'] ?></span>
-                </div>
+              <div class="position">
+                <label>Position:</label>
+                <span><?php echo $row['position'] ?></span>
               </div>
+            </div>
 
-              <div class="email">
-                <label>E-mail:</label>
-                <span><?php echo $row['email'] ?></span>
-              </div>
-              <div class="phone">
-                <label>Phone:</label>
-                <span><?php echo $row['phone'] ?></span>
-              </div>
-              <div class="company">
-                <label>Company:</label>
-                <span><?php echo $row['company_name'] ?></span>
-              </div>
+            <div class="email">
+              <label>E-mail:</label>
+              <span><?php echo $row['email'] ?></span>
+            </div>
+            <div class="phone">
+              <label>Phone:</label>
+              <span><?php echo $row['phone'] ?></span>
+            </div>
+            <div class="company">
+              <label>Company:</label>
+              <span><?php echo $row['company_name'] ?></span>
+            </div>
 
-              <div class="socials">
-                <i class="fa-brands fa-facebook" id="facebook"></i>
-                <i class="fa-brands fa-twitter" id="twitter"></i>
-                <i class="fa-brands fa-instagram" id="instagram"></i>
-                <i class="fa-brands fa-telegram" id="telegram"></i>
-              </div>
+            <div class="socials">
+              <i class="fa-brands fa-facebook" id="facebook"></i>
+              <i class="fa-brands fa-twitter" id="twitter"></i>
+              <i class="fa-brands fa-instagram" id="instagram"></i>
+              <i class="fa-brands fa-telegram" id="telegram"></i>
             </div>
           </div>
+        </div>
 
-          <!-------------------EVENT SECTION---------------------------->
-          <div class="event-wrapper">
+        <!-------------------EVENT SECTION---------------------------->
+        <div class="event-wrapper">
 
-            <div class="events">
-              <header>
-                <div class="heading">
-                  <h3>Upcoming Events</h3>
-                  <p class="current-date"><?php echo date("d F, Y") ?></p>
-                </div>
-                <button class="view">
-                  <a href="Meetings.php" style="text-decoration:none; color:#fff;">View All</a>
-                </button>
-              </header>
-              <div class="events-list">
-
+          <div class="events">
+            <header>
+              <div class="heading">
+                <h3>Upcoming Events</h3>
+                <p class="current-date"><?php echo date("d F, Y") ?></p>
               </div>
+              <button class="view">
+                <a href="Meetings.php" style="text-decoration:none; color:#fff;">View All</a>
+              </button>
+            </header>
+            <div class="events-list">
+
             </div>
-
           </div>
-
 
         </div>
+
+        <section class="profile-attendance">
+          <form method="post">
+            <label>Location:</label><br />
+            <select name="branch" class="branch" id="branch" required>
+              <option value="None" default>Select Option</option>
+              <option value="Kurla">Kurla</option>
+              <option value="Powai">Powai</option>
+              <option value="Kanjurmarg">Kanjurmarg</option>
+              <option value="Mulund">Mulund</option>
+              <option value="Ghatkopar">Ghatkopar</option>
+              <option value="Vasai">Vasai</option>
+              <option value="Andheri">Andheri</option>
+            </select>
+          </form>
+          <div class="wrapper">
+            <div class="attendance-finger">
+              <div class="punch-in">
+                <i class="fa-sharp fa-solid fa-location-dot"></i>
+                <span>Punch - In</span>
+              </div>
+              <div class="punch-out">
+                <i class="fa-solid fa-xmark"></i>
+                <span>Punch-Out</span>
+              </div>
+            </div>
+            <div class="finger-image">
+              <i class="fas fa-fingerprint finger"></i>
+              <i class="fa-solid fa-camera-retro face" onclick="faceRecog()"></i>
+            </div>
+          </div>
+
+        </section>
+
+        <div id="chart_div"></div>
+      </div>
 
       </div>
     </section>
 
     <!---------------------------ATTENDANCE SECTION------------------------------------->
-    <div class="chart_attendance">
-      <section class="profile-attendance">
-        <form method="post">
-          <label>Location:</label><br />
-          <select name="branch" class="branch" id="branch" required>
-            <option value="None" default>Select Option</option>
-            <option value="Kurla">Kurla</option>
-            <option value="Powai">Powai</option>
-            <option value="Kanjurmarg">Kanjurmarg</option>
-            <option value="Mulund">Mulund</option>
-            <option value="Ghatkopar">Ghatkopar</option>
-            <option value="Vasai">Vasai</option>
-            <option value="Andheri">Andheri</option>
-          </select>
-        </form>
-        <div class="wrapper">
-          <div class="attendance-finger">
-            <div class="punch-in">
-              <i class="fa-sharp fa-solid fa-location-dot"></i>
-              <span>Punch - In</span>
-            </div>
-            <div class="punch-out">
-              <i class="fa-solid fa-xmark"></i>
-              <span>Punch-Out</span>
-            </div>
-          </div>
-          <div class="finger-image">
-            <i class="fas fa-fingerprint finger"></i>
-            <i class="fa-solid fa-camera-retro face" onclick="faceRecog()"></i>
-          </div>
-        </div>
-
-      </section>
-
-      <div id="chart_div"></div>
-    </div>
 
   </main>
 
   <!---------------------------------FOOTER SECTION--------------------------------->
-  <footer class="footer">
+   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-4">

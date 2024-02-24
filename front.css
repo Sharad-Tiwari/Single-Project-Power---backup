@@ -135,8 +135,9 @@ ul button {
     color: red;
 }
 .menu {
+    visibility: hidden;
     position: absolute;
-    z-index: 1;
+    z-index: 100;
     right: 1rem;
     top: 1rem;
     height: 20px;
@@ -265,30 +266,29 @@ ul button {
 .open .nav{
     visibility: visible;
     width: auto;
-
 }
 
 .nav.open .list{
-    margin-top: 50px;
-    height: 90vh;
+    padding: 5%;
+    height: fit-content;
     width: 100vw;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 2rem;
 }
 .nav.open .list li {
     text-align: center;
 }
 .nav.open .list .link{
-    font-size: 50px;
+    font-size: 1.5rem;
 }
 
 .nav.open .list .app_name {
     top: 0;
-    left: 30%;
+    font-size: 2rem;
 }
 
 
@@ -443,18 +443,7 @@ ul button {
 
 }
 
-@media screen and (min-width: 720px){
-    .menu {
-        visibility: hidden;
-    }
-    .menu::before, .menu::after {
-        visibility: hidden;
-    }
 
-    .menu .burger {
-        visibility: hidden;
-    }
-}
 /* --------------------------------course list------------------------------ */
 
 .course-list {
@@ -525,50 +514,20 @@ ul button {
 }
 
 
-@media screen and (max-width: 720px){
-    .course-list{
-        display: grid;
-        grid-auto-flow: row;
-        grid-template-rows: repeat(100px, 1fr); 
-    }
 
-
-}
-@media screen and (max-width: 1080px) {
-    .nav {
-        visibility: hidden;
-    }
-
-    .menu {
-        visibility: visible;
-    }
-    .menu::before, .menu::after {
-        visibility: visible;
-    }
-
-    .menu .burger {
-        visibility: visible;
-    }
-}
 
 
 /*----------------------------------------- Profile Page ------------------------------------*/
 
-
 .profile-page {
-    height: 100%;
-    width: 100%;
-    margin: 10px;
+    width: 90%;
     position: relative;
-    top: 8%;
-    line-height: 2;
-    font-size: 30px;
-    color: black;
+    top:10%;
+    margin-bottom: 5%;
 }
 
 .profile-page select {
     height: 60px;
-    width: 400px;
     font-size: 30px;
     outline: none;
     border: none;
@@ -577,25 +536,18 @@ ul button {
 
 .profile-page .info {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
-    position: sticky;
-}
 
-.emp-info{
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-grow: 1;
 }
 
 .container-profile {
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     column-gap: 25px;
+    row-gap: 25px;
+    height: fit-content;
 }
 
 .container-profile .profile {
@@ -605,9 +557,9 @@ ul button {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 4px;
     background: rgba(130, 251, 255, 0.25);
-        -webkit-backdrop-filter: blur(50px);
-        backdrop-filter: blur(50px);
-        background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 10px;
     overflow: hidden;
@@ -655,7 +607,7 @@ ul button {
 }
 
 .container-profile .profile .details .name-details button {
-    height: 30px;  
+    height: 30px;
     width: 60px;
     background: linear-gradient(to right, #71d0e8, #8de0dd);
     padding: 5px;
@@ -722,23 +674,25 @@ ul button {
 .socials #twitter:hover {
     transform: scale(1.2);
 }
+
 .event-wrapper {
     width: 100%;
     height: inherit;
 }
+
 .container-profile h3 {
-    margin: -10px;
+    margin: 10px;
     padding: 2px;
 }
 
 
 .events {
-    width: 100%;
+    max-width: 35rem;
     height: 100%;
     background: rgba(130, 251, 255, 0.25);
-        -webkit-backdrop-filter: blur(50px);
-        backdrop-filter: blur(50px);
-        background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 10px;
 }
@@ -753,7 +707,7 @@ ul button {
 
 .events .heading p {
     font-size: 16px;
-    margin-top: 2px;
+    margin-top: 2%;
 }
 
 .events button {
@@ -774,7 +728,7 @@ ul button {
 
 .events .events-list {
     width: 100%;
-    height: 190px;
+    height: 200px;
     padding: 10px 10px 0px 0px;
     margin-top: 10px;
     overflow-y: scroll;
@@ -837,7 +791,7 @@ ul button {
 }
 
 .container-profile .events .events-list .list-icon i {
-    transform: translate(50%, -50%);
+    transform: translate(50%,50%);
     font-size: 22px;
 }
 
@@ -849,28 +803,22 @@ ul button {
     font-size: 16px;
 
 }
-.chart_attendance {
-    width: 100%;
-    height: 700px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-}
 
 .profile-attendance {
     grid-column: 1;
     margin-left: 4%;
-    height:650px;
-    margin-top: 2%;
-    margin-bottom: 14%;
+    width: 100%;
+    height: fit-content;
+    margin: 2%;
     padding: 6%;
     padding-top: 15px;
-    min-width: 780px;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 20px;
 }
-.wrapper{
+
+.wrapper {
     width: 80%;
     height: auto;
     display: flex;
@@ -878,9 +826,8 @@ ul button {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    margin-bottom: 100px;
     border-radius: 5%;
-    
+
 }
 
 .attendance-finger {
@@ -891,35 +838,38 @@ ul button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: cursive;
+    font-family: "Poppins";
     background: #fff;
-    
-    border: 4px solid rgba(255,255,255,0.2);
+    border: 4px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 1),
-    1px 2px 4px 0px rgba(255, 255, 255, 1),
-    2px 4px 8px 0px rgba(255, 255, 255, 1),
-    4px 8px 16px 0px rgba(255, 255, 255, 1);
+        1px 2px 4px 0px rgba(255, 255, 255, 1),
+        2px 4px 8px 0px rgba(255, 255, 255, 1),
+        4px 8px 16px 0px rgba(255, 255, 255, 1);
 }
 
-.attendance-finger .punch-in, .punch-out {
-    height: 5%;
-    width: 25%;
+.attendance-finger .punch-in,
+.attendance-finger .punch-out {
+    font-size: 1.5rem;
+    height: 10rem;
+    width: 30%;
     text-align: center;
+        color: #000;
     border-radius: 51% 49% 22% 63% / 84% 69% 0% 0%;
-    
+
 }
 
 .attendance-finger .punch-in {
     background-color: #fff;
     padding-top: 45px;
-    box-shadow: 0px 1px 2px 0px rgba(0,255,255,0.7),
-            1px 2px 4px 0px rgba(0,255,255,0.7),
-            2px 4px 8px 0px rgba(0,255,255,0.7),
-            2px 4px 16px 0px rgba(0,255,255,0.7);
+    box-shadow: 0px 1px 2px 0px rgba(0, 255, 255, 0.7),
+        1px 2px 4px 0px rgba(0, 255, 255, 0.7),
+        2px 4px 8px 0px rgba(0, 255, 255, 0.7),
+        2px 4px 16px 0px rgba(0, 255, 255, 0.7);
 }
 
-.attendance-finger .punch-in i, .punch-out i {
-    font-size: 40px;
+.attendance-finger .punch-in i,
+.punch-out i {
+    font-size: 3rem;
     width: 100%;
 }
 
@@ -927,9 +877,9 @@ ul button {
     background-color: #fff;
     padding-top: 45px;
     box-shadow: 0px 1px 2px 0px rgba(247, 41, 117, 0.7),
-            1px 2px 4px 0px rgba(247, 41, 117, 0.7),
-            2px 4px 8px 0px rgba(247, 41, 117, 0.7),
-            2px 4px 16px 0px rgba(247, 41, 117, 0.7);
+        1px 2px 4px 0px rgba(247, 41, 117, 0.7),
+        2px 4px 8px 0px rgba(247, 41, 117, 0.7),
+        2px 4px 16px 0px rgba(247, 41, 117, 0.7);
 }
 
 .finger-image {
@@ -940,16 +890,17 @@ ul button {
     justify-content: center;
     z-index: 1;
     display: flex;
-  
+
 }
 
-.finger-image .finger, .face {
+.finger-image .finger,
+.face {
     top: -50%;
     left: 50%;
     padding: 10px;
     background: #fff;
     visibility: hidden;
-    border:5px solid #fff;
+    border: 5px solid #fff;
     border-radius: 50%;
     margin: 10px;
     font-size: 45px;
@@ -961,11 +912,16 @@ ul button {
     padding: 0;
     width: 100vw;
     height: 100vh;
-    display: none; 
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 100;
 }
+
+#chart_div {
+    padding: 10%;
+}
+
 
 canvas {
     position: absolute;
@@ -978,7 +934,7 @@ canvas {
     padding: 20px;
     text-align: center;
     position: relative;
-    bottom: 0;
+    margin-top: 5%;
     width: 100%;
     border-radius: 15px 15px 0px 0px;
   }
@@ -1056,4 +1012,57 @@ canvas {
     font-size: 20px;
 }
 
+@media screen and (max-width: 720px) {
+    .menu {
+        visibility: hidden;
+    }
+
+    .menu::before,
+    .menu::after {
+        visibility: hidden;
+    }
+
+    .menu .burger {
+        visibility: hidden;
+    }
+
+    .profile-page {
+        position: relative;
+        top: 4%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .course-list {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-rows: repeat(100px, 1fr);
+    }
+
+
+}
+
+@media screen and (max-width: 1080px) {
+    .nav {
+        visibility: hidden;
+    }
+
+    .menu {
+        visibility: visible;
+    }
+
+    .menu::before,
+    .menu::after {
+        visibility: visible;
+    }
+
+    .menu .burger {
+        visibility: visible;
+    }
+
+    .profile-page {
+        position: relative;
+        top: 4%;
+    }
+}
 /* profile css */
