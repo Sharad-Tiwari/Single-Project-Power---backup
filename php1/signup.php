@@ -54,8 +54,8 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
 						$new_img_name = $time . $img_name;
 						if (move_uploaded_file($tmp_name, "images/" . $new_img_name)) {
 							$ran_id = rand(time(), 100000000);
-							$status = "Active now";
-							$encrypt_pass = md5($password);
+							$status = "Active";
+							$encrypt_pass = ($password);
 							$insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
                                 VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
 							if ($insert_query) {
