@@ -36,6 +36,7 @@ body {
     display: grid;
     place-items: center;
     background-repeat:repeat-y;
+    transition: .4s;
 }
 
 
@@ -48,13 +49,12 @@ body {
     border-radius: 8%;
     z-index: 10;
     padding-left: 20px;
- 
     place-items: center;
     margin-right: 10px;
 }
 
 .nav i {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .list {
@@ -65,9 +65,10 @@ body {
     justify-content: flex-end;
     gap: 40px;
     margin: 10px;
-    background-color: black;
+    background-color: rgba(11, 11, 11, 0.642);
     border-radius: 8px;
     height: 60px;
+    transition: .4s;
 
 }
 
@@ -289,6 +290,7 @@ ul button {
 .nav.open .list .app_name {
     top: 0;
     font-size: 2rem;
+    display: none;
 }
 
 
@@ -544,7 +546,7 @@ ul button {
 .container-profile {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     column-gap: 25px;
     row-gap: 25px;
     height: fit-content;
@@ -553,7 +555,7 @@ ul button {
 .container-profile .profile {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit,     minmax(200px, 1fr));
     grid-column-gap: 10px;
     row-gap: 10px;
     background: rgba(130, 251, 255, 0.25);
@@ -569,6 +571,7 @@ ul button {
 .container-profile .profile .profile-img {
     width: 250px;
     height: 250px;
+    left: 0;
     flex-shrink: 1fr;
     position: relative;
     border-radius: 50%;
@@ -1014,29 +1017,32 @@ canvas {
     flex-grow: 1fr;
     font-size: 20px;
 }
-
-@media screen and (max-width: 720px) {
-    .menu {
-        visibility: hidden;
+@media screen and (max-width: 1220px) {
+    .container-profile .profile .profile-img {
+        width: 200px;
+        height: 200px;
+        left: 0%;
     }
-
-    .menu::before,
-    .menu::after {
-        visibility: hidden;
-    }
-
-    .menu .burger {
-        visibility: hidden;
-    }
+        .profile-attendance {
+            font-size: 2rem;
+        }
+    
+        .profile-attendance select {
+            font-size: 1.5rem;
+        }
+}
+@media screen and (max-width: 1080px) {
 
     .profile-page {
         position: relative;
         top: 4%;
     }
-        .container-profile .profile .profile-img{
-            width: 200px;
-            height: 200px;
-        }
+         .container-profile .profile .profile-img {
+             width: 200px;
+             height: 200px;
+             left: 5%;
+         }
+         
 }
 
 @media screen and (max-width: 720px) {
@@ -1045,15 +1051,32 @@ canvas {
         grid-auto-flow: row;
         grid-template-rows: repeat(100px, 1fr);
     }
-
+    .footer{
+        margin-top: 15%;
+    }
 
 }
-
 @media screen and (max-width: 1080px) {
     .nav {
         visibility: hidden;
+        width: fit-content;
     }
 
+    .menu {
+        visibility: visible;
+    }
+
+    .menu::before,
+    .menu::after {
+        visibility: visible;
+    }
+
+    .menu .burger {
+        visibility: visible;
+    }
+}
+
+@media screen and (max-width: 720px) {
     .menu {
         visibility: visible;
     }
@@ -1069,13 +1092,14 @@ canvas {
 
     .profile-page {
         position: relative;
-        top: 4%;
+        top: 3%;
     }
-}
-/* profile css */
-@media screen and (max-width: 1220px){
-    .container-profile .profile .profile-img {
+        .container-profile .profile .profile-img{
             width: 200px;
             height: 200px;
+            left: 15%;
         }
+                
 }
+
+/* profile css */
