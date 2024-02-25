@@ -552,10 +552,10 @@ ul button {
 
 .container-profile .profile {
     width: 100%;
-    height: 300px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-column-gap: 10px;
+    row-gap: 10px;
     background: rgba(130, 251, 255, 0.25);
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(50px);
@@ -563,29 +563,32 @@ ul button {
     border-radius: 10px;
     padding: 10px;
     overflow: hidden;
+
 }
 
 .container-profile .profile .profile-img {
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 250px;
+    flex-shrink: 1fr;
     position: relative;
     border-radius: 50%;
+        align-items: center;
 }
 
 .container-profile .profile .profile-img img {
     position: absolute;
-    transform: translate(30%, 0%);
-    width: 60%;
-    height: 90%;
+    object-fit: cover;
+    height: 100%;
+    width:100%;
     border-radius: 50%;
-    position: absolute;
     padding: 10px;
 }
 
 .container-profile .profile .profile-img i {
     position: absolute;
-    top: 60%;
-    right: 23%;
+    top: 65%;
+    right: 0;
+    font-size: 1.5rem;
     color: #f4966a;
     cursor: pointer;
 }
@@ -596,14 +599,15 @@ ul button {
     align-items: flex-start;
     justify-content: center;
     font-size: 18px;
+    
 }
 
 .container-profile .profile .details .name-details {
     display: flex;
     align-items: flex-start;
     justify-content: baseline;
-    gap: 40px;
-    font-size: 20px;
+    gap: 20px;
+    font-size: 1.2rem;
 }
 
 .container-profile .profile .details .name-details button {
@@ -612,11 +616,11 @@ ul button {
     background: linear-gradient(to right, #71d0e8, #8de0dd);
     padding: 5px;
     border-radius: 8px;
-    color: #fff;
+    color: #fff;    
     letter-spacing: 1px;
     border: none;
     outline: none;
-    font-size: 15px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -636,7 +640,7 @@ ul button {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 30px;
+    font-size: 1.7rem;
     margin-top: 15px;
 }
 
@@ -807,7 +811,6 @@ ul button {
 .profile-attendance {
     grid-column: 1;
     margin-left: 4%;
-    width: 100%;
     height: fit-content;
     margin: 2%;
     padding: 6%;
@@ -932,11 +935,11 @@ canvas {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    text-align: center;
     position: relative;
     margin-top: 5%;
     width: 100%;
     border-radius: 15px 15px 0px 0px;
+        text-align: center; 
   }
   
   .footer .container {
@@ -951,7 +954,7 @@ canvas {
   }
   
   .footer .col-md-4 {
-    width: 33.33%;
+    width: fit-content;
     margin: 10px;
   }
 
@@ -1030,6 +1033,10 @@ canvas {
         position: relative;
         top: 4%;
     }
+        .container-profile .profile .profile-img{
+            width: 200px;
+            height: 200px;
+        }
 }
 
 @media screen and (max-width: 720px) {
@@ -1066,3 +1073,9 @@ canvas {
     }
 }
 /* profile css */
+@media screen and (max-width: 1220px){
+    .container-profile .profile .profile-img {
+            width: 200px;
+            height: 200px;
+        }
+}
