@@ -51,9 +51,11 @@ if (!isset($_SESSION['unique_id'])) {
     <div class="menu">
       <span class="burger"></span>
     </div>
+    <div class="app_name">Pinterest</div>
+    
     <nav class="nav">
       <ul class="nav list">
-        <li class="app_name">Pinterest</li>
+        <!-- <li class="app_name">Pinterest</li> -->
         <li><a class="nav link" href="Front page.html">Home</a></li>
         <li><a class="nav link" href="#">Services</a></li>
         <li><a class="nav link" href="users.php">Chat</a></li>
@@ -130,7 +132,7 @@ if (!isset($_SESSION['unique_id'])) {
               </button>
             </header>
             <div class="events-list">
-
+              
             </div>
           </div>
 

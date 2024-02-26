@@ -118,15 +118,20 @@ li:last-child {
     font-size: 20px;
 }
 
-.nav li:first-child {
+header .app_name{
     position: absolute;
     font-size: 50px;
     left:0;
+    top: 20px;
+    z-index: 100;
     background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
     padding-left: 20px;
+            font-size: 2rem;
+            display:
+                block;
 }
 
 ul button {
@@ -285,12 +290,11 @@ ul button {
 }
 .nav.open .list .link{
     font-size: 1.5rem;
+    visibility: hidden;
 }
 
-.nav.open .list .app_name {
-    top: 0;
-    font-size: 2rem;
-    display: none;
+header .app_name {
+
 }
 
 
