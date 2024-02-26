@@ -38,8 +38,10 @@ if (mysqli_num_rows($sql) < 1) {
                                     ' . $row['Time'] . '&nbsp;&nbsp;' . $row['duration'] . 'hrs</time>
                             </div>
                         </div>
+                        <div  class="icons">
                         <div class="list-icon cancel" value="'.$row['Topic']. '"><i class="fa-solid fa-xmark"></i></div>
                         <div class="list-icon complete" value="' . $row['Topic'] . '"><i class="fa-solid fa-check"></i></div>
+                        </div>
                     </div>';
             }
         }

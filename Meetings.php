@@ -22,7 +22,7 @@ if (!isset($_SESSION['unique_id'])) {
 </head>
 
 <body>
-    <main class="meet_container">
+    <!-- <main class="meet_container"> -->
         <div class="event-wrapper">
             <div class="events">
                 <header>
@@ -74,7 +74,7 @@ if (!isset($_SESSION['unique_id'])) {
                 </div>
             </div>
         </div>
-    </main>
+    <!-- </main> -->
 
 
     <script src="Javascript/meet_update.js"></script>
