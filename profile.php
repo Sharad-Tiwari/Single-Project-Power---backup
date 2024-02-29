@@ -22,7 +22,7 @@ if (!isset($_SESSION['unique_id'])) {
   <script defer src="face-api.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <script src="chart.js"></script>
+
 
 </head>
 
@@ -52,12 +52,12 @@ if (!isset($_SESSION['unique_id'])) {
       <span class="burger"></span>
     </div>
     <div class="app_name">Pinterest</div>
-    
+
     <nav class="nav">
       <ul class="nav list">
         <!-- <li class="app_name">Pinterest</li> -->
         <li><a class="nav link" href="Front page.html">Home</a></li>
-        <li><a class="nav link" href="#">Services</a></li>
+        <li><a class="nav link" href="#">Edit Profile</a></li>
         <li><a class="nav link" href="users.php">Chat</a></li>
         <li><a class="nav link" href="#">Contact</a></li>
         <li><a class="nav link" style="color:Red;" href="php1/logout.php?logout_id=<?php echo $row['unique_id'] ?>">Log Out</a></li>
@@ -132,7 +132,7 @@ if (!isset($_SESSION['unique_id'])) {
               </button>
             </header>
             <div class="events-list">
-              
+
             </div>
           </div>
 
@@ -177,12 +177,14 @@ if (!isset($_SESSION['unique_id'])) {
       </div>
     </section>
 
-    <!---------------------------ATTENDANCE SECTION------------------------------------->
-
+    <!---------------------------EDITING SECTION SECTION------------------------------------->
+    <section class="container-profile editable">
+      
+    </section>
   </main>
 
   <!---------------------------------FOOTER SECTION--------------------------------->
-   <footer class="footer">
+  <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -215,7 +217,7 @@ if (!isset($_SESSION['unique_id'])) {
     </div>
   </footer>
   <!-------------------Import scripts------------------------>
-
+  <script src="chart.js"></script>
   <script src="main.js"></script>
   <script src="Javascript\meetings.js"></script>
   <!-- <script src="Javascript/Geolocation.js"></script> -->

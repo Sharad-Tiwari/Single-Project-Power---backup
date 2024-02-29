@@ -1,6 +1,19 @@
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "php1/get-attendance.php", true);
+xhr.onload = () => {
+  if (xhr.readyState == XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      let data = xhr.response;
+      console.log(data);
+    }
+  }
+};
+xhr.send();
+
+
   function drawChart() {  
     var data = google.visualization.arrayToDataTable([
       ['Mon', 20, 28, 38, 45],
