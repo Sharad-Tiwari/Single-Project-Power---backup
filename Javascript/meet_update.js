@@ -2,12 +2,7 @@ const createslide = document.querySelector(
   ".events .events-list .create-container .create"
 ),
   submitbtn = document.querySelector(".events .events-list .create .submit");
-  //,
-  // cancelbtn = document.querySelector(".events .events-list .listbx .cancel"),
-  // completebtn = document.querySelector(
-  //   ".events .events-list .listbx .complete"
-  // );
-;
+
     
 let form = document.querySelector(".events .events-list .create .heading form");
 const createbtn = document.querySelector(".events .view"),
@@ -18,7 +13,7 @@ form.onsubmit = (e) => {
 };
 
 createbtn.onclick = () => {
-  createslide.style.display = "flex";
+  createslide.style.display = "none";
 };
 
 
