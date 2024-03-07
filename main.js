@@ -1,14 +1,14 @@
-const menuBtn = document.querySelector(".menu");
-const menu = document.querySelector(".burger");
-const nav = document.querySelector(".nav");
-const menuNav = document.querySelector(".list");
-const attenOpt = document.querySelector(".finger-image");
+// const menuBtn = document.querySelector(".menu");
+// const menu = document.querySelector(".burger");
+// const nav = document.querySelector(".nav");
+// const menuNav = document.querySelector(".list");
+const attenOpt = document.querySelector('.finger-image');
 const face = document.querySelector(".face");
 const finger = document.querySelector(".finger");
-const faceDec = document.querySelector(".facedec");
-const main = document.querySelector(".profile-page");
+const faceDec = document.querySelector('.container .facedec');
+const main = document.querySelector('.container main');
 const navItems = document.querySelectorAll(".link");
-const punchIneve = document.querySelector(".punch-in");
+const punchIneve = document.querySelector('.punch-in');
 const punchOuteve = document.querySelector(".punch-out");
 const footer = document.querySelector(".footer");
 const canvass = document.getElementsByTagName("canvas");
@@ -19,7 +19,7 @@ const form = document.querySelector(
   ".profile-page .chart_attendance .profile-attendance form"
 );
 let branch = document.getElementById("branch");
-menuBtn.addEventListener("click", toggleMenu);
+// menuBtn.addEventListener("click", toggleMenu);
 
 
 let lat, lang;
@@ -31,27 +31,29 @@ navigator.geolocation.getCurrentPosition((position) => {
   console.log(err.message);
 });
 
-function toggleMenu() {
-  if (!showMenu) {
-    nav.classList.add("open");
-    nav.style.visibility = "visible";
-    menuBtn.classList.add("open");
-    navItems.forEach((item) => item.classList.add("open"));
-    showMenu = true;
-  } else {
-    nav.classList.remove("open");
-    menuBtn.classList.remove("open");
-    navItems.forEach((item) => item.classList.remove("open"));
-    showMenu = false;
-  }
-}
+// function toggleMenu() {
+//   if (!showMenu) {
+//     nav.classList.add("open");
+//     nav.style.visibility = "visible";
+//     menuBtn.classList.add("open");
+//     navItems.forEach((item) => item.classList.add("open"));
+//     showMenu = true;
+//   } else {
+//     nav.classList.remove("open");
+//     menuBtn.classList.remove("open");
+//     navItems.forEach((item) => item.classList.remove("open"));
+//     showMenu = false;
+//   }
+// }
 
 punchIneve.addEventListener("click", () => {
+  attenOpt.style.display = "flex";
   face.style.visibility = "visible";
   finger.style.visibility = "visible";
 });
 
-punchOuteve.addEventListener("click", () => {
+punchOuteve.addEventListener('click', () => {
+  attenOpt.style.display = "flex";
   face.style.visibility = "visible";
   finger.style.visibility = "visible";
 });
@@ -86,7 +88,7 @@ function faceRecog() {
   faceDec.style.display = "flex";
   faceDec.classList.add("open");
   main.style.display = "none";
-  footer.style.display = "none";
+
   const video = document.getElementById("video");
 
   Promise.all([
