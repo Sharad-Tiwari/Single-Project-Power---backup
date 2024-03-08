@@ -52,7 +52,7 @@ punchIneve.addEventListener("click", () => {
   finger.style.visibility = "visible";
 });
 
-punchOuteve.addEventListener('click', () => {
+punchOuteve.addEventListener("click", () => {
   attenOpt.style.display = "flex";
   face.style.visibility = "visible";
   finger.style.visibility = "visible";
@@ -87,10 +87,10 @@ function punchOut() {
 function faceRecog() {
   faceDec.style.display = "flex";
   faceDec.classList.add("open");
-  main.style.display = "none";
+  main.style.visibility = "hidden";
 
   const video = document.getElementById("video");
-
+  
   Promise.all([
     faceapi.nets.ssdMobilenetv1.loadFromUri("models"),
     faceapi.nets.faceRecognitionNet.loadFromUri("models"),
@@ -215,8 +215,8 @@ function faceRecog() {
           }
           faceDec.style.display = "none";
           faceDec.classList.remove("open");
-          footer.style.display = "block";
-          main.style.display = "block";
+          main.style.visibility = "visible";
+          
         }
       });
     }, 1000);

@@ -257,6 +257,7 @@ canvas#chart:hover {
 
 main {
     margin-top: 1.4rem;
+    visibility: visible;
 }
 
 

@@ -5,7 +5,7 @@ const createslide = document.querySelector(
 
     
 let form = document.querySelector(".events .events-list .create .heading form");
-const createbtn = document.querySelector(".events .view"),
+const createbtn = document.querySelector('.events .view'),
     eventslist = document.querySelector(".events .events-list .meet_list");
 
 form.onsubmit = (e) => {
@@ -13,7 +13,7 @@ form.onsubmit = (e) => {
 };
 
 createbtn.onclick = () => {
-  createslide.style.display = "none";
+  createslide.style.display = "flex";
 };
 
 

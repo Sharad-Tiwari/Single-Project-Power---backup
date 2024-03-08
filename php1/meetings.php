@@ -25,9 +25,13 @@ if (mysqli_num_rows($sql) < 1) {
         $output .= '<div class="listbx l' . $border . '">
                   <div class="heading">
                     <h3>' . $row['Topic'] . '</h3>
-                    <time>' . $row['Time'] . ' &nbsp;&nbsp; <i class="fa-solid fa-clock"></i>  ' . $row['duration'] . ' hrs</time>
+                    <time>' . $row['Time'] . ' &nbsp;&nbsp; <span class="material-icons-sharp">
+                        schedule
+                    </span>  ' . $row['duration'] . ' hrs</time>
                   </div>
-                  <div class="list-icon"><i class="fa-solid fa-user"></i></div>
+                  <div class="list-icon"><span class="material-icons-sharp">
+                          person
+                    </span></div>
                 </div>';
       }
       

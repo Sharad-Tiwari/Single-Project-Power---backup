@@ -13,6 +13,7 @@ if (!isset($_SESSION['unique_id'])) {
     <title>User Profile</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"/>
     <link rel="stylesheet" href="profile.css"/>
+    <script src="face-api.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,6 @@ if (!isset($_SESSION['unique_id'])) {
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <img src="images/logo.images.jpg" alt="">
                     <h2>Sharad<span class="danger">Project</span></h2>
 
                 </div>
@@ -53,25 +53,25 @@ if (!isset($_SESSION['unique_id'])) {
             </div>
 
             <div class="sidebar">
-                <a href="#">
+                <a href="#" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
-                    <h3>Dashboard</h3>
+                    <h3>Profile</h3>
                 </a>
                 <a href="#">
-                    <span class="material-icons-sharp">person_outline
-
+                    <span class="material-icons-sharp">
+                        message
                     </span>
-                    <h3>Users</h3>
+                    <h3>Chat</h3>
                 </a>
                 <a href="#">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
-                    <h3>History</h3>
+                    <h3>New Meeting</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="#">
                     <span class="material-icons-sharp">
                         insights
                     </span>
@@ -81,21 +81,10 @@ if (!isset($_SESSION['unique_id'])) {
                     <span class="material-icons-sharp">
                         mail_outline
                     </span>
-                    <h3>Tickets</h3>
+                    <h3>Mail</h3>
                     <span class="message-count">27</span>
                 </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        inventory
-                    </span>
-                    <h3>Sale List</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        report_gmailerrorred
-                    </span>
-                    <h3>Reports</h3>
-                </a>
+                
                 <a href="#">
                     <span class="material-icons-sharp">
                         settings
