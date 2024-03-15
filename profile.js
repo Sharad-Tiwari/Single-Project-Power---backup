@@ -1,5 +1,19 @@
 const chart = document.querySelector("#chart").getContext("2d");
 
+
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "php1/get-attendance.php", true);
+xhr.onload = () => {
+  if (xhr.readyState == XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      let data = xhr.response;
+      console.log(data);
+    }
+  }
+};
+xhr.send();
+
+
 new Chart(chart, {
   type: "line",
   data: {

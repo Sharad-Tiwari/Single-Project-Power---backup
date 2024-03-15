@@ -53,25 +53,25 @@ if (!isset($_SESSION['unique_id'])) {
             </div>
 
             <div class="sidebar">
-                <a href="#" class="active">
+                <a href="profile.php" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Profile</h3>
                 </a>
-                <a href="#">
+                <a href="./users.php">
                     <span class="material-icons-sharp">
                         message
                     </span>
                     <h3>Chat</h3>
                 </a>
-                <a href="#">
+                <a href="Meetings.php">
                     <span class="material-icons-sharp">
                         receipt_long
                     </span>
                     <h3>New Meeting</h3>
                 </a>
-                <a href="#">
+                <a href="#chart">
                     <span class="material-icons-sharp">
                         insights
                     </span>

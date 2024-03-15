@@ -1,11 +1,14 @@
 <?php
 session_start();
 $company =  $_POST['c_code'];
+$email = $_POST['email'];
+
 if ($company) {
     $_SESSION['cc'] = $company;
+    $_SESSION['email'] = $email;
 }
     include_once  "config.php";
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     if (!empty($email) && !empty($password)) {

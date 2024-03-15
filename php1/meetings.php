@@ -11,9 +11,9 @@ $name = mysqli_fetch_assoc($namerw);
 $sql = mysqli_query($conn, "Select * from meetings where status='ACTIVE'");
 $output = "";
 if (mysqli_num_rows($sql) < 1) {
-    $output .= "No Meetings Scheduled";
+  $output .= "No Meetings Scheduled";
 } elseif (mysqli_num_rows($sql) > 0) {
-    while ($row = mysqli_fetch_assoc($sql)) {
+  while ($row = mysqli_fetch_assoc($sql)) {
     if ($i % 2 == 0) {
       $border = 1;
     } else {
@@ -21,7 +21,7 @@ if (mysqli_num_rows($sql) < 1) {
     }
     $members = explode(", ", $row['members']);
     foreach ($members as $member) {
-      if($member==$name['fname']){
+      if ($member == $name['fname']) {
         $output .= '<div class="listbx l' . $border . '">
                   <div class="heading">
                     <h3>' . $row['Topic'] . '</h3>
@@ -34,11 +34,9 @@ if (mysqli_num_rows($sql) < 1) {
                     </span></div>
                 </div>';
       }
-      
     }
-        
-    $i = $i+1;
-    }
+
+    $i = $i + 1;
+  }
 }
 echo $output;
-?>
