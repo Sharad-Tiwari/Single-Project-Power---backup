@@ -50,6 +50,15 @@ new Chart(chart, {
         borderColor: "blue",
         borderWidth: 2,
       },
+      {
+        label: "Attendance",
+        data: [
+          3150, 4100, 8800, 2600, 4600, 3269, 5000, 3000, 1866, 2482,
+          3644,
+        ],
+        borderColor: "green",
+        borderWidth: 2,
+      },
     ],
   },
   options: {

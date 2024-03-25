@@ -6,6 +6,7 @@ $email = $_POST['email'];
 if ($company) {
     $_SESSION['cc'] = $company;
     $_SESSION['email'] = $email;
+    
 }
     include_once  "config.php";
     
@@ -21,6 +22,20 @@ if ($company) {
                 $status = "Active";
                 $sql2 = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
                 if ($sql2) {
+                $date = date('Y-m-d');
+                $time = date('H:i:s');
+                $day = date('l');
+                $attendance = mysqli_query($conn, "SELECT * FROM attendance WHERE (email = '{$_SESSION['email']}' and present='IN' and date='{$date}' and day='{$day}')");
+                if(mysqli_num_rows($attendance)>0){
+                    $res = mysqli_fetch_assoc($attendance);
+                    if($res['present']){
+                        $_SESSION['present'] = $res['present'];
+                    }
+                } else {
+                    $SESSION['present'] = "OUT";
+                }
+                    
+
                     $_SESSION['unique_id'] = $row['unique_id'];
                     echo "success";
                 } else {
