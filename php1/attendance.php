@@ -19,8 +19,9 @@ if($_SESSION['present']=='OUT'){
 else {
     $present = "OUT";
 }
-$sql = mysqli_query($conn, "INSERT into attendance values('{$_SESSION['unique_id']}','{$_SESSION['email']}','{$name}','{$latitude}','{$longitude}','{$date}','{$time}','{$day}', '{$present}')");
+$sql = mysqli_query($conn, "INSERT into attendance values('','{$_SESSION['unique_id']}','{$_SESSION['email']}','{$name}','{$latitude}','{$longitude}','{$branch}','{$date}','{$time}','{$day}', '{$present}')");
 if($sql){
-    echo "success";
+    echo "success ".$branch;
+    
 }
 ?>

@@ -1,70 +1,73 @@
 const chart = document.querySelector("#chart").getContext("2d");
+let DataIn, outData;
 
 
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "php1/get-attendance.php", true);
+xhr.open("GET", "attendance/get-attendance.php", true);
 xhr.onload = () => {
   if (xhr.readyState == XMLHttpRequest.DONE) {
     if (xhr.status === 200) {
       let data = xhr.response;
-      console.log(data);
+      if (data === 'No data Found') {
+        console.log("No data");
+      } else {
+        DataIn = JSON.parse(data);
+        console.log(DataIn);
+      }
     }
   }
 };
 xhr.send();
 
 
-new Chart(chart, {
-  type: "line",
-  data: {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    datasets: [
-      {
-        label: "BTC",
-        data: [
-          29374, 33537, 46931, 98768, 34728, 75234, 82340, 23452, 53622, 64356,
-          65374, 13221,
-        ],
-        borderColor: "red",
-        borderWidth: 2,
-      },
-      {
-        label: "ETH",
-        data: [
-          31500, 41000, 88800, 26000, 46000, 32689, 5000, 3000, 18656, 24832,
-          36844,
-        ],
-        borderColor: "blue",
-        borderWidth: 2,
-      },
-      {
-        label: "Attendance",
-        data: [
-          3150, 4100, 8800, 2600, 4600, 3269, 5000, 3000, 1866, 2482,
-          3644,
-        ],
-        borderColor: "green",
-        borderWidth: 2,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-  },
-});
+const xhr2 = new XMLHttpRequest();
+xhr2.open("GET", "attendance/attendance-out.php", true);
+xhr2.onload = () => {
+  if (xhr2.readyState == XMLHttpRequest.DONE) {
+    if (xhr2.status === 200) {
+      let data = xhr2.response;
+      if (data === 'NO data Found') {
+        console.log("No data");
+      } else {
+        outData = JSON.parse(data);
+        console.log(outData);
+      }
+    }
+  }
+};
+xhr2.send();
+
+
+setTimeout(() => {
+  new Chart(chart, {
+    type: "line",
+    data: {
+      labels: outData.day,
+      datasets: [
+        {
+          label: "IN",
+          data: DataIn,
+          borderColor: "green",
+          borderWidth: 2,
+        },
+        {
+          label: "OUT",
+          data: outData.time,
+          borderColor: "red",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+    },
+  });
+}
+  
+  , 2000);
+
+
+
 const sideMEnu = document.querySelector("aside");
 const menuBtn = document.getElementById("menu-btn"),
   closeBtn = document.getElementById("close-btn");

@@ -25,7 +25,7 @@ if (isset($_GET['unique_id'])) {
 <body>
     <div class="wrapper">
         <section class="form signup">
-            <header>Single Project Power</header>
+            <header>Pinncale Attendance System</header>
             <form method="POST">
                 <div class="error-txt">
                     This is an Error Message!

@@ -14,11 +14,13 @@ while ($row = mysqli_fetch_assoc($sql)) {
     if($result_set){
     $data_outgoing_id.= $result_set['outgoing_msg_id'];
     }
+
     (strlen($result) > 26) ? $msg = substr($result, 0, 26) . '...' : $msg = $result;
     
     ($outgoing_id == $data_outgoing_id) ? $you = "You: " : $you = "";
 
-    ($row['status']== "Not Active")? $offline = "offline": $offline = "";
+    ($row['status']== "InActive")? $offline = "offline": $offline = "";
+    
     $output .= '<a href="chat.php?user_id=' . $row['unique_id'] . '">
                         <div class="content">
                                 <img src="php1/images/' . $row['img'] . '">

@@ -239,14 +239,21 @@ form .name-details .field:last-child{
 .users-list a .content p{
     color:#67676a;
 }
-.users-list a .statue-dot{
-    font-size: 12px;
+.users-list a .content .details span {
+    color: #0b0b0c;
+}
+
+.users-list a .status-dot{
+    font-size: 15px;
     color:#468669;
 }
 /*Using same class name in php to show offline status*/
-.users-list a .statue-dot.offline{
+    
+.users-list a .status-dot.offline{
     color:#ccc;
 }
+
+
 /*Chat Area Css Code*/
 .chat-area header{
     display:flex;

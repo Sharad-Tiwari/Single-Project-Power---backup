@@ -25,7 +25,7 @@
   <body>
     <div class="wrapper">
       <section class="form login">
-        <header>Single Project Power</header>
+        <header>Pinnacle Attendance System</header>
         <form method="POST">
           <div class="error-txt">This is an Error Message!</div>
           <div class="field input">
