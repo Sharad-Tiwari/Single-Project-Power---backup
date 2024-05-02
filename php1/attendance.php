@@ -16,7 +16,14 @@ $day = date('l');
 if($_SESSION['present']=='OUT'){
     $present = "IN";
 }
-else {
+else if(!isset($_SESSION['present'])) {
+    $presentSql =mysqli_query($conn, "Select present from attendance where email= {$_SESSION['email']} and date = $date" );
+    if(mysqli_num_rows($presentSql)>0){
+        $pres = mysqli_fetch_assoc($presentSql);
+        $pres['present'] == 'IN'? $present = 'OUT':$present='IN';
+    }
+    
+}else {
     $present = "OUT";
 }
 $sql = mysqli_query($conn, "INSERT into attendance values('','{$_SESSION['unique_id']}','{$_SESSION['email']}','{$name}','{$latitude}','{$longitude}','{$branch}','{$date}','{$time}','{$day}', '{$present}')");

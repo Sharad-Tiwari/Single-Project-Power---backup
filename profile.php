@@ -75,7 +75,7 @@ if (!isset($_SESSION['unique_id'])) {
                     <span class="material-icons-sharp">
                         insights
                     </span>
-                    <h3>Analytics</h3>
+                    <h3>Attendnace</h3>
                 </a>
                 <a href="#">
                     <span class="material-icons-sharp">
@@ -84,19 +84,19 @@ if (!isset($_SESSION['unique_id'])) {
                     <h3>Mail</h3>
                     <span class="message-count">27</span>
                 </a>
-                
+<!--                 
                 <a href="#">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
-                </a>
-                <a href="#">
+                </a> -->
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         add
                     </span>
                     <h3>New Login</h3>
-                </a>
+                </a> -->
                 <a href="php1/logout.php?logout_id=<?php echo $row['unique_id'] ?>">
                     <span class="material-icons-sharp">
                         logout

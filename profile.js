@@ -1,6 +1,19 @@
 const chart = document.querySelector("#chart").getContext("2d");
 let DataIn, outData;
+const activemenu = document.querySelectorAll(".container .sidebar a");
 
+activemenu.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.classList.contains("active")) {
+      element.classList.remove("active");
+    } else {
+      activemenu.forEach((el) => {
+        el.classList.remove("active");
+      });
+      element.classList.add("active");
+    }
+  });
+});
 
 const xhr = new XMLHttpRequest();
 xhr.open("GET", "attendance/get-attendance.php", true);

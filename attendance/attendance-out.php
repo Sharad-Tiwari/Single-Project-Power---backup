@@ -13,27 +13,37 @@ $timings = [];
 $day =[];
 $combinedarray = [];
 
-$sql = mysqli_query($conn, "SELECT * FROM attendance WHERE (email = '{$_SESSION['email']}' and present='OUT')");
-// and date='{$date}' and day='{$day}
-if (mysqli_num_rows($sql) > 0) {
+$sql = mysqli_query($conn, "SELECT * FROM attendance WHERE (email = '{$_SESSION['email']}') and (present = 'OUT') ORDER BY date ASC" );
+// if($sql){
+//     $combinedarray = [
+//         "error" => "Sucess",
+//         "data"=> $res = mysqli_fetch_all($sql),
+//         "newDate"=> $newDate
+//     ];
+// }
+if((mysqli_num_rows($sql)) > 0) {
+    
     while ($res = mysqli_fetch_assoc($sql)) {
         if ($res['date'] == $newDate) {
-            //echo $res['date'] . " " . date('H', strtotime($res['time'])) . "<br>";
-            //$newDate = date('Y-m-d',strtotime($newDate.'+1day'));
+            //Getting timings.....
             array_push($timings, (int)date('H', strtotime($res['time'])));
+            //Getting Day....
             array_push($day, $res['day']);
         }
         $newDate = date('Y-m-d', strtotime($newDate . '+1day'));
     }
-} else {
-    echo "No data Found"    ;
-}
-$combinedarray =[
-    'time' => $timings,
-    'day' => $day
-];
-
+ }  else {
+    $combinedarray = [
+        "error" => "No Data Found",
+    ];
+ }
+  $combinedarray = [
+      'time' => !empty($timings)?$timings:"No data",
+      'day' => !empty($day)?$day: "No data"
+     ];
 $arr = json_encode($combinedarray);
 
 echo $arr;
+
+mysqli_close($conn);
 ?>

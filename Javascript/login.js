@@ -13,12 +13,16 @@ continueBtn.onclick = () => {
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        let data = xhr.response;
+        let data = JSON.parse(xhr.response);
         console.log(data);
-        if (data === "success") {
-          location.href = "profile.php";
+        if (data.login === "success") {
+          if (data.role === "admin") {
+            location.href = "admin page/admin.php";
+          } else if(data.role==="user"){
+            location.href = "profile.php";
+          }
         } else {
-          errorText.textContent = data;
+          errorText.textContent = data.error;
           errorText.style.display = "block";
           
         }

@@ -14,9 +14,10 @@ $timings = [];
 
 
 
-$attendance = mysqli_query($conn, "SELECT * FROM attendance WHERE (email = '{$_SESSION['email']}' and present='IN')");
-// and date='{$date}' and day='{$day}
-if (mysqli_num_rows($attendance) > 0) {
+$attendance = mysqli_query($conn, "SELECT * FROM attendance WHERE (email = '{$_SESSION['email']}' and present='IN') ORDER BY date ASC");
+
+
+if ((mysqli_num_rows($attendance)) > 0) {
     while ($res = mysqli_fetch_assoc($attendance)) {
         if ($res['date'] == $newDate) {
             //echo $res['date'] . " " . date('H', strtotime($res['time'])) . "<br>";
@@ -26,10 +27,13 @@ if (mysqli_num_rows($attendance) > 0) {
         $newDate = date('Y-m-d', strtotime($newDate . '+1day'));
     }
 } else {
-    echo "No data Found";
+    $timings= [
+        "error" => "No Data Found"
+    ];
 }       
 
 $arr = json_encode($timings);
 
 echo $arr;
+mysqli_close($conn);
 ?>

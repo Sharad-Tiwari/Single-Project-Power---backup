@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['unique_id'])) {
-    header("location: index.php");
+    header("location: ../index.php");
 }
 ?>
 
@@ -54,13 +54,19 @@ if (!isset($_SESSION['unique_id'])) {
             </div>
 
             <div class="sidebar">
-                <a href="#">
+                <a href="#analyse" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="../users.php">
+                    <span class="material-icons-sharp">
+                        message
+                    </span>
+                    <h3>Chat</h3>
+                </a>
+                <!-- <a href="#">
                     <span class="material-icons-sharp">person_outline
 
                     </span>
@@ -71,8 +77,8 @@ if (!isset($_SESSION['unique_id'])) {
                         receipt_long
                     </span>
                     <h3>History</h3>
-                </a>
-                <a href="#" class="active">
+                </a> -->
+                <a href="#chart">
                     <span class="material-icons-sharp">
                         insights
                     </span>
@@ -82,34 +88,28 @@ if (!isset($_SESSION['unique_id'])) {
                     <span class="material-icons-sharp">
                         mail_outline
                     </span>
-                    <h3>Tickets</h3>
+                    <h3>Mails</h3>
                     <span class="message-count">27</span>
                 </a>
-                <a href="#">
+                <a href="#recent-orders">
                     <span class="material-icons-sharp">
                         inventory
                     </span>
                     <h3>Sale List</h3>
                 </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        report_gmailerrorred
-                    </span>
-                    <h3>Reports</h3>
-                </a>
-                <a href="#">
+                <!-- <a href="#">
                     <span class="material-icons-sharp">
                         settings
                     </span>
                     <h3>Settings</h3>
-                </a>
-                <a href="#">
+                </a> -->
+                <a href="#new_users">
                     <span class="material-icons-sharp">
                         add
                     </span>
                     <h3>New Login</h3>
                 </a>
-                <a href="php1/logout.php?logout_id=<?php echo $row['unique_id'] ?>">
+                <a href="../php1/logout.php?logout_id=<?php echo $row['unique_id'] ?>">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -126,7 +126,7 @@ if (!isset($_SESSION['unique_id'])) {
         <main>
             <h1>Analytics</h1>
             <!-- ANalyses -->
-            <div class="analyse">
+            <div class="analyse" id="analyse">
                 <div class="sales">
                     <div class="status">
                         <div class="info">
@@ -185,7 +185,7 @@ if (!isset($_SESSION['unique_id'])) {
             <h2 class="chart">Analytical Chart</h2>
             <canvas id="chart"></canvas>
             <!-- New Users Section -->
-            <div class="new-users">
+            <div class="new-users" id="new_users">
                 <h2>New Users</h2>
                 <div class="user-list">
                     <div class="user">
@@ -216,7 +216,7 @@ if (!isset($_SESSION['unique_id'])) {
             <!-- END of New User Sections -->
 
             <!-- Recent Orders Table -->
-            <div class="recent-orders">
+            <div class="recent-orders" id="recent-orders">
                 <h2>Recent Orders</h2>
                 <table>
                     <thead>
@@ -232,7 +232,7 @@ if (!isset($_SESSION['unique_id'])) {
 
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
+                <a href=" #">Show All</a>
             </div>
             <!-- END of Recent Orders -->
 
@@ -364,8 +364,9 @@ if (!isset($_SESSION['unique_id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="admin.js"></script>
     <script src="index.js"></script>
-    <script src="../Javascript/meetings.js"></script>
+
     <script src="../Javascript/new-user.js"></script>
+    <script src="meetings.js    "></script>
 </body>
 
 </html>
